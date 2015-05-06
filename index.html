@@ -43,7 +43,7 @@
 					<h1>Code Coverage</h1>
 					<h3>An Introduction</h3>
 					<p>
-						<small>Created by <a href="http://treyhunner.com">Trey Hunner</a> / <a href="https://twitter.com/treyhunner">@treyhunner</a></small>
+						<small><a href="http://treyhunner.com">Trey Hunner</a> / <a href="https://twitter.com/treyhunner">@treyhunner</a></small>
 					</p>
 				</section>
 
@@ -68,22 +68,143 @@
 				</section>
 
 				<section>
-					<h2>Metrics</h2>
+					<h2>Popular Coverage Metrics</h2>
 					<ul>
-						<li>Function coverage</li>
 						<li>Statement coverage or line coverage</li>
+						<li>Function coverage</li>
 						<li>Branch coverage</li>
-						<li>Condition coverage</li>
 					</ul>
 					<aside class="notes">
 						TODO: Add slides showing an example of each?
 					</aside>
 				</section>
 
+				<section>
+					<section>
+						<h2>Statement coverage</h2>
+						<pre><code data-trim contenteditable>
+function doSomething() {
+    return;
+    console.log('hello world');
+}
+
+doSomething();
+						</code></pre>
+					</section>
+					<section>
+						<h2>Statement coverage</h2>
+						<img src="images/statement.png">
+						<p>Statements covered: 75% ( 3 / 4 )</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Function coverage</h2>
+						<pre><code data-trim contenteditable>
+function pass() {}
+
+console.log('hello world');
+						</code></pre>
+					</section>
+					<section>
+						<h2>Function coverage</h2>
+						<img src="images/function.png">
+						<p>Functions covered: 0% ( 0 / 1 )</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Branch coverage</h2>
+						<pre><code data-trim contenteditable>
+if (true || false) {
+    console.log('hello world!');
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Branch coverage</h2>
+						<img src="images/branch.png">
+						<p>Branches covered: 50% ( 2 / 4 )</p>
+					</section>
+					<section>
+						<h2>Branch coverage</h2>
+						<img src="images/branch2.png">
+						<p>Branches covered: 50% ( 2 / 4 )</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>What is it good for?</h2>
+					<ul>
+						<li>100% coverage is not an indicator of good tests</li>
+						<li>&lt; 100% coverage tells us we missed something</li>
+					</ul>
+					<aside class="notes" data-markdown>
+						Code coverage is a metric.  Metrics are useless unless we understand their purpose.
+
+						In the game of code coverage, 100% is the magic number.  If our tests execute every edge of our code, they will have 100% coverage.
+
+						However, 100% code coverage does not mean our tests are comprehensive or well-written.  Code coverage says nothing about our test assertions and it does not measure the interdependence of code branches.
+					</aside>
+				</section>
+
+				<section>
+					<h2>JS Code Coverage Tools</h2>
+					<ul>
+						<li><a href="https://gotwarlost.github.io/istanbul/">Istanbul</a><span class="fragment" data-fragment-index="0">: requires Node.js</span></li>
+						<li><a href="http://blanketjs.org/">Blanket.js</a><span class="fragment" data-fragment-index="1">: can run directly from web browser</span></li>
+						<li><a href="https://tntim96.github.io/JSCover/">JSCover</a><span class="fragment" data-fragment-index="2">: requires Java</span></li>
+					</ul>
+					<aside class="notes" data-markdown>
+						Istanbul needs to modify your code before running it so you'll need Node.js installed to run your tests.  Blanket.js can be run through Node or included directly in your web browser.  JSCover requires Java and I have never used it.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Gamifying Coverage</h2>
+					<ul>
+						<li>Continuous Integration: did my tests break?</li>
+						<li>Coverage reporting: did my code coverage decrease?</li>
+					</ul>
+					<aside class="notes" data-markdown>
+						Just as continuous integration services notify you when you break your tests, code coverage reporting services notify you when your code coverage decreases.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Code Coverage Reporting</h2>
+					<ul>
+						<li><a href="https://coveralls.io/">Coveralls</a>: popular and widely used</li>
+						<li><a href="https://codecov.io/">Codecov</a>: supports branch coverage and partial line coverage</li>
+					</ul>
+					<aside class="notes" data-markdown>
+						Coveralls is the current big fish in this space.  As far as I know, they were the first SaaS code coverage product.
+
+						Codecov is the new kid on the block.
+
+						Coveralls does not support branch coverage or statement coverage (it sees everything in lines).  Codecov supports both branch coverage and statement coverage.
+
+						I found Codecov last year while looking for a solution to Coveralls' lacking support for branch coverage.
+
+						Both Coveralls and Codecov are free for open source projects.  Coveralls starts at $5 per repository and Codecov starts is $5 for all private repositories in your account.
+
+						The wonderful folks at Codecov have provided me with a coupon code to get a free month of code coverage for all private repositories in your Github account.  The code is the same as my Twitter handle, which you'll see again at the end of this talk.
+					</aside>
+				</section>
+
 				<section style="text-align: left;">
-					<h1>THE END</h1>
+					<h1>Final</h1>
 					<p>
-					Want to work with me?  Hire me at <a href="http://truthful.technology/">Truthful Technology</a>.
+						<small><a href="http://treyhunner.com">Trey Hunner</a> / <a href="https://twitter.com/treyhunner">@treyhunner</a></small>
+					</p>
+					<p>
+					<small>
+						Web consultant available for hire.
+						<br>
+						<a href="http://truthful.technology/">http://truthful.technology</a>.
+					</small>
 					</p>
 				</section>
 
