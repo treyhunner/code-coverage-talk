@@ -52,6 +52,9 @@
 					<blockquote cite="https://en.wikipedia.org/w/index.php?title=Code_coverage&oldid=656064908">
 						&ldquo;In computer science, code coverage is a measure used to describe the degree to which the source code of a program is tested by a particular test suite.&rdquo; <nobr>&mdash; <a href="https://en.wikipedia.org/w/index.php?title=Code_coverage&oldid=656064908">Wikipedia</a></nobr>
 					</blockquote>
+					<aside class="notes" data-markdown>
+						Code coverage describes the degree to which your automated tests actually test your source code.
+					</aside>
 
 				</section>
 
@@ -60,7 +63,7 @@
 					<p>
 						Run my code and measure which parts were utilized.
 					</p>
-					<aside class="notes">
+					<aside class="notes" data-markdown>
 						From the perspective of a code coverage tool, code coverage means: run my code and record which parts of the code were used.
 					</aside>
 					</blockquote>
@@ -74,8 +77,14 @@
 						<li>Function coverage</li>
 						<li>Branch coverage</li>
 					</ul>
-					<aside class="notes">
-						TODO: Add slides showing an example of each?
+					<aside class="notes" data-markdown>
+						Statement coverage tells you which code statements were executed.
+
+						Line coverage tells you which lines of code were reached.
+
+						Function coverage tells you which functions were called.
+
+						Branch coverage tells you which code branches were entered.
 					</aside>
 				</section>
 
@@ -90,11 +99,17 @@ function doSomething() {
 
 doSomething();
 						</code></pre>
+						<aside class="notes" data-markdown>
+							Any guesses as to what the statement coverage looks like for this example?
+						</aside>
 					</section>
 					<section>
 						<h2>Statement coverage</h2>
 						<img src="images/statement.png">
 						<p>Statements covered: 75% ( 3 / 4 )</p>
+						<aside class="notes" data-markdown>
+							1 of 4 statements unexecuted
+						</aside>
 					</section>
 				</section>
 
@@ -106,11 +121,19 @@ function pass() {}
 
 console.log('hello world');
 						</code></pre>
+						<aside class="notes" data-markdown>
+							Any guesses as to what the function coverage looks like for this example?
+						</aside>
 					</section>
 					<section>
 						<h2>Function coverage</h2>
 						<img src="images/function.png">
 						<p>Functions covered: 0% ( 0 / 1 )</p>
+						<aside class="notes" data-markdown>
+							We have 1 function and it was never executed.
+
+							Note that our statement coverage was perfect. Every statement was executed.
+						</aside>
 					</section>
 				</section>
 
@@ -122,17 +145,45 @@ if (true || false) {
     console.log('hello world!');
 }
 						</code></pre>
+						<aside class="notes" data-markdown>
+							Any guesses about the branch coverage here?
+						</aside>
 					</section>
 					<section>
 						<h2>Branch coverage</h2>
 						<img src="images/branch.png">
 						<p>Branches covered: 50% ( 2 / 4 )</p>
+						<aside class="notes" data-markdown>
+							We have 4 branches and 2 of them were never executed.
+
+							Which 2 branches were missed?
+
+							Answer:
+
+							- the highlighted "false" means the OR branch of our "if" statement was never executed
+							- that little "E" means the "false" branch of our "if" statement was never executed
+						</aside>
 					</section>
 					<section>
 						<h2>Branch coverage</h2>
 						<img src="images/branch2.png">
 						<p>Branches covered: 50% ( 2 / 4 )</p>
+						<aside class="notes" data-markdown>
+							The missing "if" statement coverage is more obvious if we add an "else" statement.
+						</aside>
 					</section>
+				</section>
+
+				<section>
+					<h2>Demo Time!</h2>
+					<a href="example_coverage/qunit.html" class="fragment">Example of QUnit's code coverage</a>
+					<aside class="notes" data-markdown>
+						Time for a live demo!
+
+						Just kidding.  I'm just going to show off an example.
+
+						QUnit is a JavaScript test framework.
+					</aside>
 				</section>
 
 				<section>
@@ -158,7 +209,15 @@ if (true || false) {
 						<li><a href="https://tntim96.github.io/JSCover/">JSCover</a><span class="fragment" data-fragment-index="2">: requires Java</span></li>
 					</ul>
 					<aside class="notes" data-markdown>
-						Istanbul needs to modify your code before running it so you'll need Node.js installed to run your tests.  Blanket.js can be run through Node or included directly in your web browser.  JSCover requires Java and I have never used it.
+						There are three popular JS code coverage tools.
+
+						Istanbul is the big name in this space right now.  QUnit uses Istanbul.
+
+						Istanbul needs to modify your code before running it so you'll need Node.js installed to run your tests.
+
+						Blanket.js can be run through Node or included directly in your web browser.
+
+						JSCover requires Java and I have never used it.
 					</aside>
 				</section>
 
@@ -170,6 +229,8 @@ if (true || false) {
 					</ul>
 					<aside class="notes" data-markdown>
 						Just as continuous integration services notify you when you break your tests, code coverage reporting services notify you when your code coverage decreases.
+
+						Code coverage reporting services integrate into your continuous integration testing services (if you're already writing automated tests and using CI).
 					</aside>
 				</section>
 
@@ -180,17 +241,15 @@ if (true || false) {
 						<li><a href="https://codecov.io/">Codecov</a>: supports branch coverage and partial line coverage</li>
 					</ul>
 					<aside class="notes" data-markdown>
-						Coveralls is the current big fish in this space.  As far as I know, they were the first SaaS code coverage product.
+						Coveralls is the current big fish in this space.  As far as I know, they were the first SaaS code coverage product.  Codecov is the new kid on the block.
 
-						Codecov is the new kid on the block.
+						Unlike Coveralls, Codecov supports both branch coverage and statement coverage.  I found Codecov last year while looking for a solution to Coveralls' lacking support for branch coverage.
 
-						Coveralls does not support branch coverage or statement coverage (it sees everything in lines).  Codecov supports both branch coverage and statement coverage.
+						Both are free for open source projects.  For private repositories, Coveralls is $5 per repo and Codecov is $5 for all repos.
 
-						I found Codecov last year while looking for a solution to Coveralls' lacking support for branch coverage.
+						The wonderful folks at Codecov have provided me with a coupon code which gives you one month of free access for all your private repositories.
 
-						Both Coveralls and Codecov are free for open source projects.  Coveralls starts at $5 per repository and Codecov starts is $5 for all private repositories in your account.
-
-						The wonderful folks at Codecov have provided me with a coupon code to get a free month of code coverage for all private repositories in your Github account.  The code is the same as my Twitter handle, which you'll see again at the end of this talk.
+						The coupon code is the same my Twitter handle (which is my name), You'll see my handle again at the end of this talk.
 					</aside>
 				</section>
 
