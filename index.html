@@ -78,6 +78,8 @@
 						<li>Branch coverage</li>
 					</ul>
 					<aside class="notes" data-markdown>
+						We're going to talk about 3 types of code coverage metrics.
+
 						Statement coverage tells you which code statements were executed.
 
 						Line coverage tells you which lines of code were reached.
@@ -100,7 +102,7 @@ function doSomething() {
 doSomething();
 						</code></pre>
 						<aside class="notes" data-markdown>
-							Any guesses as to what the statement coverage looks like for this example?
+							Can anyone tell me which lines of code were executed in this example?
 						</aside>
 					</section>
 					<section>
@@ -147,6 +149,8 @@ if (true || false) {
 						</code></pre>
 						<aside class="notes" data-markdown>
 							Any guesses about the branch coverage here?
+
+							Follow up: any idea how many missing branches we have?
 						</aside>
 					</section>
 					<section>
@@ -161,7 +165,7 @@ if (true || false) {
 							Answer:
 
 							- the highlighted "false" means the OR branch of our "if" statement was never executed
-							- that little "E" means the "false" branch of our "if" statement was never executed
+							- that little "E" means the "else" branch of our "if" statement was never executed
 						</aside>
 					</section>
 					<section>
@@ -198,6 +202,8 @@ if (true || false) {
 						In the game of code coverage, 100% is the magic number.  If our tests execute every edge of our code, they will have 100% coverage.
 
 						However, 100% code coverage does not mean our tests are comprehensive or well-written.  Code coverage says nothing about our test assertions and it does not measure the interdependence of code branches.
+
+						You can have 100% code coverage with broken code.
 					</aside>
 				</section>
 
@@ -245,7 +251,7 @@ if (true || false) {
 
 						Unlike Coveralls, Codecov supports both branch coverage and statement coverage.  I found Codecov last year while looking for a solution to Coveralls' lacking support for branch coverage.
 
-						Both are free for open source projects.  For private repositories, Coveralls is $5 per repo and Codecov is $5 for all repos.
+						Both are free for open source projects.  For private repositories, Coveralls is $5 per repo and Codecov is $10 per repo.
 
 						The wonderful folks at Codecov have provided me with a coupon code which gives you one month of free access for all your private repositories.
 
